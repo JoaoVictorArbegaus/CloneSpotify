@@ -1,0 +1,195 @@
+/* ===== Reset mínimo ===== */
+html, body, #root {
+  height: 100%;
+  margin: 0;
+  width: 100%;
+}
+
+/* Cor base do texto em cima do fundo gradiente */
+body { color: #e9ecf1; }
+
+/* ===== Fundo gradiente + textura ===== */
+.app-bg {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background:
+    radial-gradient(1200px 800px at -10% -10%, rgba(255,255,255,.08), transparent 40%),
+    radial-gradient(1000px 600px at 110% 120%, rgba(255,255,255,.06), transparent 50%),
+    linear-gradient(135deg, #1f0d3a 0%, #1c2b6a 40%, #1f2a7e 60%, #2b1e6a 100%);
+  position: relative;
+}
+
+/* textura discreta (listras diagonais) */
+.app-bg::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background-image: repeating-linear-gradient(
+    135deg,
+    rgba(255,255,255,0.06) 0px,
+    rgba(255,255,255,0.06) 1px,
+    transparent 1px,
+    transparent 6px
+  );
+  opacity: .25;
+}
+
+/* ===== Main (entre navbar e footer) ===== */
+.app-main {
+  flex: 1;
+  display: flex;   /* importante para centralização */
+  min-height: 0;
+  padding: 24px 16px;
+}
+
+/* ===== Páginas ===== */
+.page {
+  flex: 1;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 16px;
+  display: flex;
+  flex-direction: column;
+}
+
+.page--narrow { max-width: 520px; }
+
+.page--center {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem 1rem;
+}
+
+/* ===== Card Login ===== */
+.card-login {
+  width: 100%;
+  max-width: 420px;
+  background: rgba(15, 18, 28, 0.70);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 14px;
+  box-shadow: 0 10px 25px rgba(0,0,0,.25);
+  padding: 2rem;
+  color: #f4f6ff;
+}
+
+/* ===== Tipografia ===== */
+h1, h2, h3, h4, h5, h6 { color: #f2f5ff; }
+label, .form-label { color: #eaf0ff; }
+.text-muted, small { color: #c9d1e8 !important; }
+
+/* ===== Inputs ===== */
+.form-control, .form-select {
+  background: rgba(255,255,255,0.08) !important;
+  color: #fff !important;
+  border: 1px solid rgba(255,255,255,0.2) !important;
+}
+.form-control::placeholder { color: #bfc6d9; }
+.form-control:focus, .form-select:focus {
+  outline: 0;
+  box-shadow: 0 0 0 .25rem rgba(128, 111, 255, .25);
+  border-color: #9a8bff !important;
+}
+
+/* ===== Cards / Listas (glass escuro) ===== */
+.card,
+.list-group-item {
+  background: rgba(15, 18, 28, 0.65) !important;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.14) !important;
+  color: #f4f6ff !important;
+}
+.list-group-item { border-color: rgba(255,255,255,0.14) !important; }
+
+/* Títulos e labels dentro de cards/listas */
+.card h1, .card h2, .card h3, .card h4, .card h5, .card h6,
+.list-group-item h1, .list-group-item h2, .list-group-item h3,
+.list-group-item h4, .list-group-item h5, .list-group-item h6,
+.card .form-label {
+  color: #f4f6ff !important;
+}
+
+/* Texto secundário nessas superfícies */
+.card .text-muted,
+.list-group-item .text-muted,
+.card small,
+.list-group-item small { color: #c9d1e8 !important; }
+
+/* ===== Modal escuro para manter contraste ===== */
+.modal-content {
+  background: rgba(15, 18, 28, 0.92) !important;
+  color: #f4f6ff !important;
+  border: 1px solid rgba(255, 255, 255, 0.14) !important;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+/* ===== Botões ===== */
+.btn-primary {
+  background: linear-gradient(90deg, #6d5dfc, #9a5bff);
+  border: none;
+  color: #fff;
+}
+.btn-primary:hover { filter: brightness(1.05); }
+
+.btn-outline-primary {
+  border-color: #8c7bff;
+  color: #cfd7ff;
+}
+.btn-outline-primary:hover {
+  background: #8c7bff;
+  color: #0e0f17;
+}
+
+/* ===== Select dropdown (lista de opções) no tema escuro ===== */
+.form-select,
+.modal .form-select {
+  background: rgba(255,255,255,0.08) !important;
+  color: #f4f6ff !important;
+  border: 1px solid rgba(255,255,255,0.2) !important;
+}
+
+/* Cor do popup da lista e das opções */
+.form-select option,
+select option,
+.form-select optgroup,
+select optgroup {
+  background-color: #0f121c;  /* fundo escuro do painel */
+  color: #f4f6ff;             /* texto claro legível */
+}
+
+/* Estados úteis */
+.form-select option:checked,
+select option:checked {
+  background-color: #1b2030;  /* opção selecionada */
+  color: #ffffff;
+}
+
+.form-select option:hover,
+select option:hover {
+  background-color: #2a3150;
+  color: #ffffff;
+}
+
+/* ===== Caso use dropdown do Bootstrap em vez de <select> ===== */
+.dropdown-menu {
+  background: rgba(15,18,28,0.95);
+  color: #f4f6ff;
+  border: 1px solid rgba(255,255,255,0.14);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+.dropdown-item { color: #f4f6ff; }
+.dropdown-item:hover,
+.dropdown-item:focus {
+  background: rgba(140,123,255,0.20);
+  color: #fff;
+}
